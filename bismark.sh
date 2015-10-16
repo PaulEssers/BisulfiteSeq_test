@@ -2,7 +2,12 @@ top=$(readlink -f ../)/
 tmp=$(readlink -f ../tmp)/
 raw=$(readlink -f ../raw)/
 rawt=$(readlink -f ../raw_trimmed)/
-bt2=$(readlink -f ../raw_trimmed)/
+# bt2=$(readlink -f ../bowtie2)/
+
+
+if [[ -e ${tmp}bismark.ids ]]; then
+rm ${tmp}bismark.ids
+fi
 
 
 mkdir ../bismark
@@ -13,7 +18,7 @@ for file in $(ls *.fastq); do echo "#!/bin/bash
 cd ${rawt}
 module load Bowtie2
 module load Bismark
-bismark --bowtie2 -o ${bsm} ${tmp}/Bisulfite_Genome/ ${rawt}${file}
+bismark --bowtie2 -o ${bsm} ${tmp} ${rawt}${file}
 rm ${tmp}bismark_${file::(-5)}sh" > ${tmp}bismark_${file::(-5)}sh
 
 cd ${tmp}

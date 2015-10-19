@@ -15,15 +15,15 @@ rawt=$(readlink -f ../raw_trimmed)/
 echo 'downloading files from SRA'
 
 echo "#!/bin/bash
-module load srtoolkit
+module load sratoolkit
 cd ${raw}
-fastq-dump --split-files -gzip SRR2319536 &
-fastq-dump --split-files -gzip SRR2319537 &
-fastq-dump --split-files -gzip SRR2319538 &
-fastq-dump --split-files -gzip SRR2319539 &
+fastq-dump --split-files -gzip SRR2319536 
+fastq-dump --split-files -gzip SRR2319537
+fastq-dump --split-files -gzip SRR2319538
+fastq-dump --split-files -gzip SRR2319539
 rm ${tmp}fastq_dump.sh" > ${tmp}fastq_dump.sh
 
-echo"#!/bin/bash
+echo "#!/bin/bash
 cd ${raw}
 mv SRR2319536_1.fastq.gz control2_1.fastq.gz
 mv SRR2319537_1.fastq.gz control3_1.fastq.gz

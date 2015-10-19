@@ -21,14 +21,21 @@ echo 'downloading files from SRA'
 echo "#!/bin/bash
 module load srtoolkit
 cd ${raw}
-fastq-dump SRR2319536 
-fastq-dump SRR2319537 
-fastq-dump SRR2319538 
-fastq-dump SRR2319539 
-mv SRR2319536.fastq control2.fastq
-mv SRR2319537.fastq control3.fastq
-mv SRR2319538.fastq epsilon10.fastq
-mv SRR2319539.fastq epsilon12.fastq
+fastq-dump --split-files -gzip SRR2319536 
+fastq-dump --split-files -gzip SRR2319537 
+fastq-dump --split-files -gzip SRR2319538 
+fastq-dump --split-files -gzip SRR2319539 
+
+mv SRR2319536_1.fastq.gz control2_1.fastq.gz
+mv SRR2319537_1.fastq.gz control3_1.fastq.gz
+mv SRR2319538_1.fastq.gz epsilon10_1.fastq.gz
+mv SRR2319539_1.fastq.gz epsilon12_1.fastq.gz
+
+mv SRR2319536_2.fastq.gz control2_2.fastq.gz
+mv SRR2319537_2.fastq.gz control3_2.fastq.gz
+mv SRR2319538_2.fastq.gz epsilon10_2.fastq.gz
+mv SRR2319539_2.fastq.gz epsilon12_2.fastq.gz
+
 
 rm ${tmp}fastq_dump.sh" > ${tmp}fastq_dump.sh
 

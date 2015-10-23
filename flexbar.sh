@@ -20,6 +20,7 @@ module load Flexbar
 flexbar -r ${tmp}${file} \
 -t ${top}raw_trimmed/${file::(-9)} \
 -n 18 -f sanger \
+-a ${top}adaptors.fa \
 --pre-trim-phred 20 --min-read-length 25 --max-uncalled 2
 cd ${top}raw_trimmed
 # pigz -p 10 ${file}

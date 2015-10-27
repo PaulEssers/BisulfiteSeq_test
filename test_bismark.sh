@@ -14,8 +14,8 @@ mkdir ../bismark
 bsm=$(readlink -f ../bismark)
 
 cd ${rawt}
-srun head -n 200 control2_1.fastq > test_1.fastq
-srun head -n 200 control2_2.fastq > test_2.fastq
+# srun head -n 200 control2_1.fastq > test_1.fastq
+# srun head -n 200 control2_2.fastq > test_2.fastq
 
 
 # only run once per pair of files

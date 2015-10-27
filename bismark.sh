@@ -17,7 +17,7 @@ for file in $(ls *.fastq); do echo ${file::(-8)}
 if [[ -e ${tmp}bismark_${file::(-8)}.sh ]]
 then echo "file already exists"
 else	
-echo ${tmp}bismark_${file::(-8)}.sh
+# echo ${tmp}bismark_${file::(-8)}.sh
 echo "#!/bin/bash
 cd ${rawt}
 module load Bowtie2

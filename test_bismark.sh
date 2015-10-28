@@ -4,13 +4,10 @@ raw=$(readlink -f ../raw)/
 rawt=$(readlink -f ../raw_trimmed)/
 # bt2=$(readlink -f ../bowtie2)/
 
-
 if [[ -e ${tmp}bismark.ids ]]; then
 rm ${tmp}bismark.ids
 fi
-
-
-mkdir ../bismark
+# mkdir ../bismark
 bsm=$(readlink -f ../bismark)
 
 cd ${rawt}
@@ -19,16 +16,18 @@ cd ${rawt}
 
 
 # only run once per pair of files
-for file in $(ls test*.fastq); do echo ${file::(-8)}
+for file in $(ls test*.fastq); do 
+
 if [[ -e ${tmp}bismark_${file::(-8)}.sh ]]
-then echo "file already exists"
+then echo "mate2: ${file}   (pair already submitted)"
+
 else	
-echo ${tmp}bismark_${file::(-8)}.sh
+echo "mate1: ${file}"
 echo "#!/bin/bash
 cd ${rawt}
 module load Bowtie2
 module load Bismark
-bismark --bowtie2 -N 1 -o ${bsm} ${bsm} -1 ${rawt}${file::(-7)}1.fastq -2 ${rawt}${file::(-7)}2.fastq
+bismark --bowtie2 -N 1 --non_directional -o ${bsm} ${bsm} -1 ${rawt}${file::(-7)}1.fastq -2 ${rawt}${file::(-7)}2.fastq
 rm ${tmp}bismark_${file::(-8)}.sh" > ${tmp}bismark_${file::(-8)}.sh
 
 cd ${tmp}

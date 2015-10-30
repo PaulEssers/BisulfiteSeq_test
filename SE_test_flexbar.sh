@@ -14,7 +14,7 @@ rm ${tmp}flexbar.ids
 fi
 
 cd ${raw}
-head -n 4000 SRR*.fastq > test.fastq
+head -n 40000000 SRR*.fastq > test.fastq
 
 file=test.fastq
 

@@ -12,7 +12,7 @@ fi
 bsm=$(readlink -f ../bismark)
 
 cd ${rawt}
-file=test.fastq
+file=subset68.fastq
 
 # only run once per pair of files
 echo "#!/bin/bash

@@ -12,7 +12,7 @@ if [[ -e ${tmp}fastqc.ids ]]; then
 rm ${tmp}fastqc.ids
 fi
 
-file=test.fastq
+file=subset68.fastq
 
 echo "#!/bin/bash
 module load FastQC
